@@ -7,6 +7,7 @@ import 'bulma'
 import './assets/theme.css'
 
 Vue.config.productionTip = false
+Vue.prototype.$http = require('axios')
 
 new Vue({
   router,

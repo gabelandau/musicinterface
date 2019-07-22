@@ -1,21 +1,30 @@
 <template>
   <div class="home">
-    <div class="box block">Dining Room</div>
-    <div class="box block">Living Room</div>
-    <div class="box block">Bathrooms</div>
-    <div class="box block">Master</div>
-    <div class="box block">Outside</div>
+    <div class="box block" @click="navZone('dining')">Dining Room</div>
+    <div class="box block" @click="navZone('living')">Living Room</div>
+    <div class="box block" @click="navZone('bathrooms')">Bathrooms</div>
+    <div class="box block" @click="navZone('master')">Master</div>
+    <div class="box block" @click="navZone('outside')">Outside</div>
     <div class="box block empty">&nbsp;</div>
     <div class="bottom">
-      <div class="box block">All On</div>
-      <div class="box block">All Off</div>
+      <div class="box block" @click="makeRequest('on')">All On</div>
+      <div class="box block" @click="makeRequest('off')">All Off</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  methods: {
+    navZone (zone) {
+      this.$router.push({ path: `/zone/${zone}` })
+    },
+    makeRequest (command) {
+      this.$http.get(`http://localhost:5000/api/zone/global/${command}`)
+        .then(res => console.log(res))
+    }
+  }
 }
 </script>
 
