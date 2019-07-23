@@ -1,9 +1,9 @@
 <template>
   <div class="zone">
-    <div class="box block" @click="makeRequest('up')">Volume Up</div>
-    <div class="box block" @click="makeRequest('down')">Volume Down</div>
     <div class="box block" @click="makeRequest('on')">On</div>
     <div class="box block" @click="makeRequest('off')">Off</div>
+    <div class="box block" @click="makeRequest('up')">Volume Up</div>
+    <div class="box block" @click="makeRequest('down')">Volume Down</div>
     <div class="box block empty">&nbsp;</div>
     <div class="bottom">
       <div class="box block" @click="navHome()">Home</div>
@@ -20,7 +20,7 @@ export default {
       this.$router.push({ path: '/' })
     },
     makeRequest (command) {
-      this.$http.get(`http://localhost:5000/api/zone/${this.id}/${command}`)
+      this.$http.get(`http://192.168.1.12:5000/api/zone/${this.id}/${command}`)
         .then(res => console.log(res))
     }
   }

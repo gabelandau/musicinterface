@@ -21,7 +21,7 @@ export default {
       this.$router.push({ path: `/zone/${zone}` })
     },
     makeRequest (command) {
-      this.$http.get(`http://localhost:5000/api/zone/global/${command}`)
+      this.$http.get(`http://192.168.1.12:5000/api/zone/global/${command}`)
         .then(res => console.log(res))
     }
   }
